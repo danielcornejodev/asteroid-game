@@ -18,8 +18,6 @@ window.onload = function () {
   }
 
   function startGame() {
-    console.log("start game");
-
     game = new Game(); // invokes new instance of Game class
 
     game.start(); // invokes the start method

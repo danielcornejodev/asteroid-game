@@ -1,4 +1,4 @@
-class Obstacle {
+class redAsteroid {
     constructor(gameScreen) {
         this.gameScreen = gameScreen;
         this.left = Math.floor(Math.random() * 250); //left; horizontal absolute position
