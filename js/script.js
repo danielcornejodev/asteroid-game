@@ -26,11 +26,13 @@ window.onload = function () {
     // Function that handles keydown event
     function handleKeydown(event) {
       const key = event.key;
+      console.log(key);
+      //possible Key Stroke are the value of event.key for arrow controls
       const possibleKeystrokes = [
         "ArrowLeft",
         "ArrowUp",
         "ArrowRight",
-        "ArrowDown",
+        "ArrowDown"
       ];
   
       // Check if the pressed key is in the possibleKeystrokes array
@@ -38,18 +40,20 @@ window.onload = function () {
         event.preventDefault();
   
         // Update player's directionX and directionY based on the key pressed
+
+        
         switch (key) {
           case "ArrowLeft":
-            game.player.directionX = -1;
+            game.player.directionX = -.75;
             break;
           case "ArrowUp":
-            game.player.directionY = -1;
+            game.player.directionY = -.75;
             break;
           case "ArrowRight":
-            game.player.directionX = 1;
+            game.player.directionX = .75;
             break;
           case "ArrowDown":
-            game.player.directionY = 1;
+            game.player.directionY = .75;
             break;
         }
       }

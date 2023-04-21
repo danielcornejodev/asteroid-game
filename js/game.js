@@ -8,7 +8,14 @@ class Game {
         this.statsContainer = document.getElementById("stats-container");
         this.bodyElement= document.querySelector('body');
         this.mainElement = document.querySelector('main');
-        this.player = null;
+        this.player = new Player(
+            this.gameScreen, 
+            50, //left; horizontal starting absolute position
+            80, //top; vertical starting absolute position 
+            100, //width; initial width of spaceship img
+            150, //height; initial height of spaceship img
+            "../images/spaceship.png" //imgSrc
+        );
         this.height = 100;
         this.width = 100;
         this.obstacles = [];
@@ -26,10 +33,10 @@ class Game {
         this.startScreen.style.display = "none";
         // show game screen
         this.gameScreen.style.display = "block";
-        this.statsContainer.style.display = 'block';
+        this.statsContainer.style.display = 'flex';
         this.bodyElement.style.backgroundImage = 'none';
         this.mainElement.style.display = 'flex';
-        this.mainElement.style.padding = '20px 0';
+
         //starts the gameLoop method
         this.gameLoop();
     }
@@ -41,7 +48,7 @@ class Game {
             return;
         }
 
-        // this.update();
+        this.update();
 
         //recursive loop to invoke itself repeatedly. Ensures a consistest frame rate 
         window.requestAnimationFrame(() => this.gameLoop());
@@ -49,7 +56,7 @@ class Game {
 
     update() {
         // //invoke move method. Move method updates the players position of x and y 
-        // this.player.move();
+        this.player.move();
 
         // for (let i = 0; i < this.obstacles.length; i++) {
         //     const obstacle = this.obstacles[i];
