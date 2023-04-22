@@ -8,6 +8,10 @@ class Game {
         this.statsContainer = document.getElementById("stats-container");
         this.bodyElement= document.querySelector('body');
         this.mainElement = document.querySelector('main');
+        this.minDec = document.getElementById('minDec');
+        this.minUni = document.getElementById('minUni');
+        this.secDec = document.getElementById('secDec');
+        this.secUni = document.getElementById('secUni');
         this.player = new Player(
             this.gameScreen, 
             50, //left; horizontal starting absolute position
@@ -23,10 +27,6 @@ class Game {
         this.health = 100;
         this.gameIsOver = false;
         this.chronometer = new Chronometer();
-        this.minDec = document.getElementById('minDec');
-        this.minUni = document.getElementById('minUni');
-        this.secDec = document.getElementById('secDec');
-        this.secUni = document.getElementById('secUni');
     }
 
     start() {
@@ -42,23 +42,24 @@ class Game {
         this.bodyElement.style.backgroundImage = 'none';
         this.mainElement.style.display = 'flex';
         this.gameHealth.innerText = `${this.health}%`;
+        this.chronometer.start(this.printTime);
 
 
         //starts the gameLoop method
         this.gameLoop();
     }
 
-    printTime() {
+    printTime = () => {
         this.printMinutes();
         this.printSeconds();
     }
-
-   printMinutes() {
+    
+    printMinutes = () => {
         this.minUni.innerHTML = this.chronometer.computeTwoDigitNumber(this.chronometer.getMinutes())[1];
         this.minDec.innerHTML = this.chronometer.computeTwoDigitNumber(this.chronometer.getMinutes())[0];
     }
-      
-    printSeconds() {
+    
+    printSeconds = () => {
         this.secUni.innerHTML = this.chronometer.computeTwoDigitNumber(this.chronometer.getSeconds())[1];
         this.secDec.innerHTML = this.chronometer.computeTwoDigitNumber(this.chronometer.getSeconds())[0];
     }
@@ -70,8 +71,6 @@ class Game {
             return;
         }
 
-        //time printed as game is live
-        this.printTime();
 
 
         this.update();
