@@ -203,6 +203,9 @@ class Game {
             whiteAsteroid.element.remove();
         });
 
+        this.chronometer.stop();
+        console.log(this.chronometer.currentTime)
+
 
         this.gameIsOver = true;
 
