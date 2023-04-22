@@ -52,20 +52,20 @@ class Player {
 
     }
 
-    didCollide(obstacle) {
-        const playerRect = this.element.getBoundingClientRect(); //method returns a DOMRect object providing information about the size of an element and its position relative to the viewport.
-        const obstacleRect = obstacle.element.getBoundingClientRect();
+    // didCollideRed(redAsteroid) {
+    //     const playerRect = this.element.getBoundingClientRect(); //method returns a DOMRect object providing information about the size of an element and its position relative to the viewport.
+    //     const redAsteroidRect = redAsteroid.element.getBoundingClientRect();
     
-        if (
-          playerRect.left < obstacleRect.right &&
-          playerRect.right > obstacleRect.left &&
-          playerRect.top < obstacleRect.bottom &&
-          playerRect.bottom > obstacleRect.top
-        ) {
-          return true;
-        } else {
-          return false;
-        }
-      }
+    //     if (
+    //       playerRect.left < redAsteroidRect.right &&
+    //       playerRect.right > redAsteroidRect.left &&
+    //       playerRect.top < redAsteroidRect.bottom &&
+    //       playerRect.bottom > redAsteroidRect.top
+    //     ) {
+    //       return true;
+    //     } else {
+    //       return false;
+    //     }
+    //   }
   }
 
