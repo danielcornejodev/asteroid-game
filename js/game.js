@@ -22,6 +22,11 @@ class Game {
         this.time = 0;
         this.health = 100;
         this.gameIsOver = false;
+        this.chronometer = new Chronometer();
+        this.minDec = document.getElementById('minDec');
+        this.minUni = document.getElementById('minUni');
+        this.secDec = document.getElementById('secDec');
+        this.secUni = document.getElementById('secUni');
     }
 
     start() {
@@ -37,8 +42,25 @@ class Game {
         this.bodyElement.style.backgroundImage = 'none';
         this.mainElement.style.display = 'flex';
         this.gameHealth.innerText = `${this.health}%`;
+
+
         //starts the gameLoop method
         this.gameLoop();
+    }
+
+    printTime() {
+        this.printMinutes();
+        this.printSeconds();
+    }
+
+   printMinutes() {
+        this.minUni.innerHTML = this.chronometer.computeTwoDigitNumber(this.chronometer.getMinutes())[1];
+        this.minDec.innerHTML = this.chronometer.computeTwoDigitNumber(this.chronometer.getMinutes())[0];
+    }
+      
+    printSeconds() {
+        this.secUni.innerHTML = this.chronometer.computeTwoDigitNumber(this.chronometer.getSeconds())[1];
+        this.secDec.innerHTML = this.chronometer.computeTwoDigitNumber(this.chronometer.getSeconds())[0];
     }
 
     gameLoop() {
@@ -47,6 +69,10 @@ class Game {
         if (this.gameIsOver){
             return;
         }
+
+        //time printed as game is live
+        this.printTime();
+
 
         this.update();
 
@@ -57,6 +83,8 @@ class Game {
     update() {
         // //invoke move method. Move method updates the players position of x and y 
         this.player.move();
+       
+     
 
         // Create a new obstacle based on a random probability when there is no other obstacles on the screen
         // if (Math.random() > 0.99 && this.redAsteroids.length < 1){

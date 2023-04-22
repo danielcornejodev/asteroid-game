@@ -21,6 +21,8 @@ window.onload = function () {
     game = new Game(); // invokes new instance of Game class
 
     game.start(); // invokes the start method
+    
+
   }
 
     // Function that handles keydown event
