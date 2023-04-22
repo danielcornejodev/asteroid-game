@@ -16,13 +16,15 @@ class Game {
             this.gameScreen, 
             50, //left; horizontal starting absolute position
             80, //top; vertical starting absolute position 
-            100, //width; initial width of spaceship img
+            80, //width; initial width of spaceship img
             140, //height; initial height of spaceship img
             "../images/spaceship.png" //imgSrc
         );
         this.height = 100;
         this.width = 100;
         this.redAsteroids = [];
+        this.purpleAsteroids = [];
+        this.whiteAsteroids = [];
         this.time = 0;
         this.health = 100;
         this.gameIsOver = false;
@@ -87,7 +89,8 @@ class Game {
 
         // Create a new obstacle based on a random probability when there is no other obstacles on the screen
         // if (Math.random() > 0.99 && this.redAsteroids.length < 1){
-        if (Math.random() > 0.98){
+        //RED ASTEROIDS
+        if (Math.random() > 0.98 && this.redAsteroids.length < 6){
             this.redAsteroids.push(new redAsteroid(this.gameScreen))
         }
 
@@ -117,16 +120,73 @@ class Game {
             }
         }
 
-            // If health is 0, end the game
-            if (this.health === 0) {
-                this.endGame();
-            }
+        //PURPLE ASTEROIDS
+        if (Math.random() > 0.98 && this.purpleAsteroids.length < 2){
+            this.purpleAsteroids.push(new purpleAsteroid(this.gameScreen))
+        }
+
+
+        for (let i = 0; i < this.purpleAsteroids.length; i++) {
+            const purpleAsteroid = this.purpleAsteroids[i];
+            purpleAsteroid.move();
+
+
+            // If the player's spaceship collides with a redAsteroid
+            if (this.player.didCollideRed(purpleAsteroid)) {
+                // Remove the redAsteroid element from the DOM
+                purpleAsteroid.element.remove();
                 
+                // Reduce health by 35%
+                this.health -= 35;
+                this.gameHealth.innerText = `${this.health}%`;
 
-
+            } // If the obstacle is off the screen (at the bottom)
+            else if (purpleAsteroid.top > this.height) {
             
-        
-        
+                // Remove the obstacle from the DOM
+                purpleAsteroid.element.remove();
+                // Remove obstacle object from the array
+                this.purpleAsteroids.splice(i, 1);
+
+            }
+        }
+
+        //WHITE ASTEROIDS
+        if (Math.random() > 0.98 && this.whiteAsteroids.length < 1){
+            this.whiteAsteroids.push(new whiteAsteroid(this.gameScreen))
+        }
+
+
+        for (let i = 0; i < this.whiteAsteroids.length; i++) {
+            const whiteAsteroid = this.whiteAsteroids[i];
+            whiteAsteroid.move();
+
+
+            // If the player's spaceship collides with a redAsteroid
+            if (this.player.didCollideRed(whiteAsteroid)) {
+                // Remove the redAsteroid element from the DOM
+                whiteAsteroid.element.remove();
+                
+                // Reduce health by 35%
+                this.health -= 50;
+                this.gameHealth.innerText = `${this.health}%`;
+
+            } // If the obstacle is off the screen (at the bottom)
+            else if (whiteAsteroid.top > this.height) {
+            
+                // Remove the obstacle from the DOM
+                whiteAsteroid.element.remove();
+                // Remove obstacle object from the array
+                this.whiteAsteroids.splice(i, 1);
+
+            }
+        }
+
+        // If health is 0, end the game
+        if (this.health <= 0) {
+            this.endGame();
+        }
+                
     }
 
     endGame() {
@@ -134,6 +194,15 @@ class Game {
         this.redAsteroids.forEach(function (redAsteroid) {
             redAsteroid.element.remove();
         });
+
+        this.purpleAsteroids.forEach(function (purpleAsteroid) {
+            purpleAsteroid.element.remove();
+        });
+
+        this.whiteAsteroids.forEach(function (whiteAsteroid) {
+            whiteAsteroid.element.remove();
+        });
+
 
         this.gameIsOver = true;
 

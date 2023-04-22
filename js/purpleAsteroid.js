@@ -1,13 +1,13 @@
-class redAsteroid {
+class purpleAsteroid {
     constructor(gameScreen) {
         this.gameScreen = gameScreen;
         this.left = Math.floor(Math.random() * 100); //left; horizontal absolute position
         this.top = 0;  //vertical starting absolute position
-        this.width = 100; //width; initial width of vehicle img
-        this.height = 100; //height; initial height of vehicle img
+        this.width = 60; //width; initial width of vehicle img
+        this.height = 60; //height; initial height of vehicle img
         
         this.element = document.createElement("img"); //the image element representing the car. 
-        this.element.src = "../images/red-asteroid.png"; //red car img 
+        this.element.src = "../images/purple-asteroid.png"; //red car img 
     
         this.element.style.position = "absolute";
     
@@ -29,7 +29,7 @@ class redAsteroid {
     move() {
         
         // Move the obstacle down by .10%
-        this.top += .30;
+        this.top += .50;
         
         // Update the obstacle's position on the screen; Re-draw it on the DOM
         this.updatePosition();

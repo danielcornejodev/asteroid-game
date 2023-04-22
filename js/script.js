@@ -28,7 +28,7 @@ window.onload = function () {
     // Function that handles keydown event
     function handleKeydown(event) {
       const key = event.key;
-      console.log(key);
+  
       //possible Key Stroke are the value of event.key for arrow controls
       const possibleKeystrokes = [
         "ArrowLeft",
