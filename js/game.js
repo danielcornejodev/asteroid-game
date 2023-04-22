@@ -139,6 +139,10 @@ class Game {
 
         // Show end game screen
         this.gameEndScreen.style.display = "block"; 
+        this.bodyElement.style.display = "flex";
+        this.bodyElement.style.justifyContent = 'center';
+        this.bodyElement.style.alignItems = 'center';
+        this.bodyElement.style.backgroundImage = 'url(../images/space-bg.jpg)';
 
         this.gameScreen.style.display = "none";
         this.statsContainer.style.display = 'none';
