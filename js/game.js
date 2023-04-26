@@ -6,6 +6,7 @@ class Game {
         this.gameTime = document.getElementById("time");
         this.gameHealth = document.getElementById("health");
         this.statsContainer = document.getElementById("stats-container");
+        this.statsInnerCnt = document.getElementById("stats-inner-cnt");
         this.bodyElement= document.querySelector('body');
         this.mainElement = document.querySelector('main');
         this.minDec = document.getElementById('minDec');
@@ -30,6 +31,10 @@ class Game {
         this.health = 100;
         this.gameIsOver = false;
         this.chronometer = new Chronometer();
+        this.finalTimesArr = JSON.parse(sessionStorage.getItem('finalTimesArr')) || [];
+        window.addEventListener('beforeunload', () => {
+            sessionStorage.setItem('finalTimesArr', JSON.stringify(this.finalTimesArr));
+        });;
     }
 
     start() {
@@ -190,6 +195,7 @@ class Game {
                 
     }
 
+
     endGame() {
         this.player.element.remove();
         this.redAsteroids.forEach(function (redAsteroid) {
@@ -205,6 +211,20 @@ class Game {
         });
 
         this.chronometer.stop();
+
+        sessionStorage.setItem('finalTime', this.chronometer.currentTime);
+
+        let finalTime = sessionStorage.getItem('finalTime');
+        
+        this.finalTimesArr.push(finalTime);
+
+        console.log(this.finalTimesArr);
+
+        this.finalTimesArr.forEach(e => {
+            this.pElement = document.createElement('p');
+            this.pElement.innerText = e;
+            this.statsInnerCnt.appendChild(this.pElement)
+        })
 
         this.healthText.style.display = 'none';
 

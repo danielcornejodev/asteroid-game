@@ -14,6 +14,7 @@ window.onload = function () {
 
   // The function that reloads the page to start a new game
   function restartGame() {
+    
     location.reload();
   }
 
@@ -22,7 +23,6 @@ window.onload = function () {
 
     game.start(); // invokes the start method
     
-
   }
 
     // Function that handles keydown event
