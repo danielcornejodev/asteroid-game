@@ -21,16 +21,18 @@
         <div id="stats-inner-cnt">
           <h2>Stats</h2>
           <p>Time: <span id="minDec" class="number">0</span><span id="minUni" class="number">0</span><span>:</span><span id="secDec" class="number">0</span><span id="secUni" class="number">0</span></p>
-          <p>Health: <span id="health"></span></p>
+          <p id="health-text">Health: <span id="health"></span></p>
         </div>
       </div>
       <div id="game-screen"></div>
       <!-- #game-end is initially hidden using CSS style display: none -->
       <div id="game-end">
-        <!-- <img src="./images/logo.png" alt="" class="logo-img" /> -->
-        <h1>Game Over</h1>
-        <br />
-        <button id="restart-button">Restart</button>
+        <div id="game-end-inner">
+          <!-- <img src="./images/logo.png" alt="" class="logo-img" /> -->
+          <h1>Game Over</h1>
+          <br />
+          <button id="restart-button">Restart</button>
+        </div>
       </div>
     </main>
     <script type="text/javascript" src="js/chronometer.js"></script>

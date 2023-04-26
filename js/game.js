@@ -12,6 +12,7 @@ class Game {
         this.minUni = document.getElementById('minUni');
         this.secDec = document.getElementById('secDec');
         this.secUni = document.getElementById('secUni');
+        this.healthText = document.getElementById('health-text');
         this.player = new Player(
             this.gameScreen, 
             50, //left; horizontal starting absolute position
@@ -204,19 +205,17 @@ class Game {
         });
 
         this.chronometer.stop();
-        console.log(this.chronometer.currentTime)
 
+        this.healthText.style.display = 'none';
 
         this.gameIsOver = true;
 
         // Show end game screen
-        this.gameEndScreen.style.display = "block"; 
-        this.bodyElement.style.display = "flex";
-        this.bodyElement.style.justifyContent = 'center';
-        this.bodyElement.style.alignItems = 'center';
+        this.gameEndScreen.style.display = "flex"; 
+ 
         this.bodyElement.style.backgroundImage = 'url(../images/space-bg.jpg)';
 
         this.gameScreen.style.display = "none";
-        this.statsContainer.style.display = 'none';
+        
     }
 }
