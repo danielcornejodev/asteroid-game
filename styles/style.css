@@ -30,7 +30,7 @@ body {
 }
 
 #stats-container {
-  width: 10vw;
+  width: 12vw;
   justify-content: center;
   background-color: white;
   display: none;
@@ -132,3 +132,4 @@ body {
   border-radius: 5px;
   margin-bottom: 20px;
 }
+

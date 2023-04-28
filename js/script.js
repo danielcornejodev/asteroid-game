@@ -14,15 +14,14 @@ window.onload = function () {
 
   // The function that reloads the page to start a new game
   function restartGame() {
-    
+
     location.reload();
   }
 
   function startGame() {
     game = new Game(); // invokes new instance of Game class
 
-    game.start(); // invokes the start method
-    
+    game.start();
   }
 
     // Function that handles keydown event

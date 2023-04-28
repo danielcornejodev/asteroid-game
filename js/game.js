@@ -7,6 +7,8 @@ class Game {
         this.gameHealth = document.getElementById("health");
         this.statsContainer = document.getElementById("stats-container");
         this.statsInnerCnt = document.getElementById("stats-inner-cnt");
+        this.bestTime = document.getElementById('best-time');
+        this.statsUl = document.getElementById('stats-ul');
         this.bodyElement= document.querySelector('body');
         this.mainElement = document.querySelector('main');
         this.minDec = document.getElementById('minDec');
@@ -32,9 +34,13 @@ class Game {
         this.gameIsOver = false;
         this.chronometer = new Chronometer();
         this.finalTimesArr = JSON.parse(sessionStorage.getItem('finalTimesArr')) || [];
+        this.unformTimesArr = JSON.parse(sessionStorage.getItem('unformTimesArr')) || [];
+
         window.addEventListener('beforeunload', () => {
             sessionStorage.setItem('finalTimesArr', JSON.stringify(this.finalTimesArr));
+            sessionStorage.setItem('unformTimesArr', JSON.stringify(this.unformTimesArr));
         });;
+
     }
 
     start() {
@@ -195,6 +201,18 @@ class Game {
                 
     }
 
+    formatTime(num) {
+        if (num < 10 && num >= 0) {
+            return `00:0${num}`
+        } else if (num < 60) {
+            return `00:${num}`;
+        } else  {
+            let mins = Math.floor(num / 60);
+            let secs = num % 60;
+            return `0${mins}:${secs < 10 ? '0' + secs : secs}`;
+        }
+    }
+
 
     endGame() {
         this.player.element.remove();
@@ -212,19 +230,28 @@ class Game {
 
         this.chronometer.stop();
 
-        sessionStorage.setItem('finalTime', this.chronometer.currentTime);
+        let currentTime = this.chronometer.currentTime;
+
+        sessionStorage.setItem('unformFinalTime', currentTime);
+
+        sessionStorage.setItem('finalTime', this.formatTime(currentTime));
 
         let finalTime = sessionStorage.getItem('finalTime');
-        
+        let unformFinalTime = sessionStorage.getItem('unformFinalTime');
+
+        this.unformTimesArr.push(unformFinalTime);
         this.finalTimesArr.push(finalTime);
 
-        console.log(this.finalTimesArr);
 
         this.finalTimesArr.forEach(e => {
-            this.pElement = document.createElement('p');
-            this.pElement.innerText = e;
-            this.statsInnerCnt.appendChild(this.pElement)
+            this.liElement = document.createElement('li');
+            this.liElement.innerText = e;
+            this.statsUl.appendChild(this.liElement);
         })
+
+        const highestTime = Math.max(...this.unformTimesArr);
+
+        this.bestTime.innerText = `Best Time: ${this.formatTime(highestTime)}`;
 
         this.healthText.style.display = 'none';
 
