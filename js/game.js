@@ -22,7 +22,7 @@ class Game {
             80, //top; vertical starting absolute position 
             80, //width; initial width of spaceship img
             140, //height; initial height of spaceship img
-            "../images/spaceship.png" //imgSrc
+            "./images/spaceship.png" //imgSrc
         );
         this.height = 100;
         this.width = 100;

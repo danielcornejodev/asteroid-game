@@ -7,7 +7,7 @@ class whiteAsteroid {
         this.height = 40; //height; initial height of vehicle img
         
         this.element = document.createElement("img"); //the image element representing the car. 
-        this.element.src = "../images/white-asteroid.avif"; //red car img 
+        this.element.src = "./images/white-asteroid.avif"; //red car img 
     
         this.element.style.position = "absolute";
     
