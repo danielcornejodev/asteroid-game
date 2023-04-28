@@ -260,7 +260,7 @@ class Game {
         // Show end game screen
         this.gameEndScreen.style.display = "flex"; 
  
-        this.bodyElement.style.backgroundImage = 'url(../images/space-bg.jpg)';
+        this.bodyElement.style.backgroundImage = 'url(./images/space-bg.jpg)';
 
         this.gameScreen.style.display = "none";
         
