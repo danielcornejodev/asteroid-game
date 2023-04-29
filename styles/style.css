@@ -20,7 +20,7 @@ body {
 #game-title {
   font-family: minecraft;
   color: white;
-  font-size: 250px;
+  font-size: 150px;
 
 }
 
@@ -94,7 +94,7 @@ body {
   padding: 15px;
   background-color: white;
   border-radius: 3%;
-  width: 15%;
+  width: 30%;
 }
 
 #game-end-inner > h1 {
