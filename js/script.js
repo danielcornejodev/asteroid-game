@@ -45,16 +45,16 @@ window.onload = function () {
         
         switch (key) {
           case "ArrowLeft":
-            game.player.directionX = -.75;
+            game.player.directionX = -.50;
             break;
           case "ArrowUp":
-            game.player.directionY = -.75;
+            game.player.directionY = -.50;
             break;
           case "ArrowRight":
-            game.player.directionX = .75;
+            game.player.directionX = .50;
             break;
           case "ArrowDown":
-            game.player.directionY = .75;
+            game.player.directionY = .50;
             break;
         }
       }

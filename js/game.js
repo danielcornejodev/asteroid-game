@@ -20,8 +20,8 @@ class Game {
             this.gameScreen, 
             50, //left; horizontal starting absolute position
             80, //top; vertical starting absolute position 
-            80, //width; initial width of spaceship img
-            140, //height; initial height of spaceship img
+            60, //width; initial width of spaceship img
+            120, //height; initial height of spaceship img
             "./images/spaceship.png" //imgSrc
         );
         this.height = 100;
