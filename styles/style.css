@@ -8,7 +8,9 @@ html, body {
 } 
 
 body {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-image: url(../images/space-bg.jpg) ;
 	-webkit-animation-name: STAR-MOVE;
 	-webkit-animation-duration: 400s;
@@ -20,18 +22,19 @@ body {
 #game-title {
   font-family: minecraft;
   color: white;
-  font-size: 150px;
-
+  font-size: 100px;
+  margin: 0;
 }
 
 #game-intro {
-  margin-top: 8%;
-  padding-top: 5%;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #stats-container {
-  width: 12vw;
+  width: 14vw;
   justify-content: center;
   background-color: white;
   display: none;
@@ -43,7 +46,7 @@ body {
   height: 100vh;
   font: black;
   width: 100%;
-  padding-top: 5%;
+  padding: 5%;
 }
 
 #stats-inner-cnt > h2 {
@@ -91,11 +94,14 @@ body {
 }
 
 #game-end-inner {
+  display: flex;
   flex-direction: column;
   padding: 15px;
   background-color: white;
   border-radius: 3%;
-  width: 15vw;
+  width: 300px;
+  justify-content: center;
+  align-items: center;
 }
 
 #game-end-inner > h1 {
@@ -132,5 +138,6 @@ body {
   box-shadow: 0;
   border-radius: 5px;
   margin-bottom: 20px;
+  width: 50%;
 }
 

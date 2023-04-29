@@ -61,6 +61,7 @@ class Game {
         this.gameScreen.style.display = "block";
         this.statsContainer.style.display = 'flex';
         this.bodyElement.style.backgroundImage = 'none';
+        this.bodyElement.style.display = 'block';
         this.mainElement.style.display = 'flex';
         this.gameHealth.innerText = `${this.health}%`;
         this.chronometer.start(this.printTime);
