@@ -2,7 +2,7 @@ window.onload = function () {
   const startButton = document.getElementById("start-button");
   const restartButton = document.getElementById("restart-button");
 
-  startScreenSound = new startSound('../sounds/02 Start Music.mp3');
+  startScreenSound = new startSound('./sounds/02 Start Music.mp3');
 
   startScreenSound.play();
 

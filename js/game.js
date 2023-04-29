@@ -41,11 +41,11 @@ class Game {
             sessionStorage.setItem('unformTimesArr', JSON.stringify(this.unformTimesArr));
         });;
         this.gameSoundPlay = new gameSound(
-            '../sounds/Interstellar Odyssey.ogg',
+            './sounds/Interstellar Odyssey.ogg',
             this.gameScreen
         )
         this.gameEndMusic = new endSound(
-            '../sounds/game-over-arcade-6435.mp3',
+            './sounds/game-over-arcade-6435.mp3',
             this.gameEndScreen
         )
     }
