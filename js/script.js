@@ -2,6 +2,10 @@ window.onload = function () {
   const startButton = document.getElementById("start-button");
   const restartButton = document.getElementById("restart-button");
 
+  startScreenSound = new startSound('../sounds/02 Start Music.mp3');
+
+  startScreenSound.play();
+
   startButton.addEventListener("click", function () {
     startGame();
   });
@@ -14,7 +18,6 @@ window.onload = function () {
 
   // The function that reloads the page to start a new game
   function restartGame() {
-
     location.reload();
   }
 
@@ -22,6 +25,8 @@ window.onload = function () {
     game = new Game(); // invokes new instance of Game class
 
     game.start();
+
+    startScreenSound.stop();
   }
 
     // Function that handles keydown event

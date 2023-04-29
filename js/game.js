@@ -40,7 +40,14 @@ class Game {
             sessionStorage.setItem('finalTimesArr', JSON.stringify(this.finalTimesArr));
             sessionStorage.setItem('unformTimesArr', JSON.stringify(this.unformTimesArr));
         });;
-
+        this.gameSoundPlay = new gameSound(
+            '../sounds/Interstellar Odyssey.ogg',
+            this.gameScreen
+        )
+        this.gameEndMusic = new endSound(
+            '../sounds/game-over-arcade-6435.mp3',
+            this.gameEndScreen
+        )
     }
 
     start() {
@@ -57,7 +64,7 @@ class Game {
         this.mainElement.style.display = 'flex';
         this.gameHealth.innerText = `${this.health}%`;
         this.chronometer.start(this.printTime);
-
+        this.gameSoundPlay.play();
 
         //starts the gameLoop method
         this.gameLoop();
@@ -215,6 +222,8 @@ class Game {
 
 
     endGame() {
+        this.gameSoundPlay.stop();
+        this.gameEndMusic.play();
         this.player.element.remove();
         this.redAsteroids.forEach(function (redAsteroid) {
             redAsteroid.element.remove();
